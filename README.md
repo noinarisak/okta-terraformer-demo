@@ -12,7 +12,7 @@ Simple demos showcasing Okta and Terraformer( Reverse Terraform). The intended a
 
 * Okta Tenant - Free Development tenant [here](https://developer.okta.com/).
 * Terraform - Install docs [here](https://learn.hashicorp.com/tutorials/terraform/install-cli) and introduction [here](https://www.terraform.io/intro/index.html).
-* Terraform - Install docs [here](https://github.com/GoogleCloudPlatform/terraformer#installation)
+* Terraformer - Install docs [here](https://github.com/GoogleCloudPlatform/terraformer#installation).
 
 ## Quick Start
 
