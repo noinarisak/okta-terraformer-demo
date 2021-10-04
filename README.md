@@ -1,6 +1,6 @@
 # Okta :heart: Terraformer
 
-Simple demos showcasing Okta and Terraformer( Reverse Terraform). The intended audience for this repo are for practitioners who are new to `Terraform` but familiar with Okta. Please review this [introduction on Terraform](https://www.terraform.io/intro/index.html) and of course more info on [Okta](https://developer.okta.com/).
+Simple demos showcasing Okta and Terraformer( Reverse Terraform). The intended audience for this repo are for practitioners who are familiar with `Terraform` and Okta. Please review this [introduction on Terraform](https://www.terraform.io/intro/index.html) and of course more info on [Okta](https://developer.okta.com/) if you are not. My other [Okta Terraform Demo](https://github.com/noinarisak/okta-terraform-demo) is quick walk-through to get you started.
 
 ## Table of Contents
 
@@ -13,12 +13,15 @@ Simple demos showcasing Okta and Terraformer( Reverse Terraform). The intended a
 * Okta Tenant - Free Development tenant [here](https://developer.okta.com/).
 * Terraform - Install docs [here](https://learn.hashicorp.com/tutorials/terraform/install-cli) and introduction [here](https://www.terraform.io/intro/index.html).
 * Terraformer - Install docs [here](https://github.com/GoogleCloudPlatform/terraformer#installation).
+* (Optional) [tfenv](https://github.com/tfutils/tfenv) - Terraform Version Manager 🎉
 
 ## Quick Start
 
-*NOTE*: This walk-through was developed on version Terraform v0.14, any other version of Terraform and your mileage will vary :wink:. There is a wonder tool, [tfenv](https://github.com/tfutils/tfenv), to manage multiple version on you mac if happen to manage different versions of Terraform.
+**NOTE**: Please review Terraformer Okta supported resources at the following [link](https://github.com/GoogleCloudPlatform/terraformer/blob/master/docs/okta.md). The contributors are continously adding and fixing resources to align in parity to the Terraform Okta Provider. Issues and feature request can be submitted on the main [repo](https://github.com/GoogleCloudPlatform/terraformer/issues).
 
 ### Tools
+
+**NOTE**: It is subtle but names of the commandline tools are `terraform` and `terraformer` which are two commandline applicatons.
 
 Validate install:
 
@@ -27,14 +30,23 @@ Validate install:
 $ terraform version
 
 ie.
-Terraform v0.14.x
+Terraform v1.x.x
 ...
 
 # List help details
 $ terraform help
 ```
 
-### Setup Steps for Each Demo
+```bash
+# Show version
+$ terraformer -v
+
+ie.
+version v0.8.x
+```
+
+
+### Setup Steps for Demo
 
 Setup a developer Okta Org and create a API Token.
 
@@ -44,6 +56,8 @@ Setup a developer Okta Org and create a API Token.
 4. On the API screen, click `Create Token` and name your API Token.
 5. Copy and store the generated token so you can use this `backend.config` file later.
 6. Make note of your Okta Org url. (ie. `dev-302083.okta.com`) you need this later too.
+
+This demo walkthrough expects a existing Okta org/tenant that contains a few supporting resources like: Oauth/OIDC apps, users, groups, etc.
 
 ## Example Demos
 
