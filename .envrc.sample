@@ -1,0 +1,4 @@
+# Okta Tenent ie https://dev-1537305.okta.com or https://dev-1537305.oktapreview.com
+export OKTA_API_TOKEN=_OKTA_API_TOKEN_HERE_
+export OKTA_ORG_NAME=_OKTA_SUBDOMAIN_HERE_
+export OKTA_BASE_URL=_OKTA_ORG_URL_HERE_

@@ -14,6 +14,7 @@ Simple demos showcasing Okta and Terraformer( Reverse Terraform). The intended a
 * Terraform - Install docs [here](https://learn.hashicorp.com/tutorials/terraform/install-cli) and introduction [here](https://www.terraform.io/intro/index.html).
 * Terraformer - Install docs [here](https://github.com/GoogleCloudPlatform/terraformer#installation).
 * (Optional) [tfenv](https://github.com/tfutils/tfenv) - Terraform Version Manager 🎉
+* (Optional, but highly recommend) [dotenv](https://direnv.net/) - Best environment variable tool for command-line ninja.
 
 ## Quick Start
 
@@ -57,11 +58,123 @@ Setup a developer Okta Org and create a API Token.
 5. Copy and store the generated token so you can use this `backend.config` file later.
 6. Make note of your Okta Org url. (ie. `dev-302083.okta.com`) you need this later too.
 
-This demo walkthrough expects a existing Okta org/tenant that contains a few supporting resources like: Oauth/OIDC apps, users, groups, etc.
+Setting your commandline environment, which I'm using `direnv` and copy and update `.envrc.sample` to have `.envrc` file containing Okta information.
 
-## Example Demos
+1. Validate `direnv` is installed.
 
-* WIP
+```bash
+$ direnv version
+
+ie.
+2.28.0
+```
+
+2. Copy and update the `.envrc.sample` file using your favorite editor. I'm using VIM.
+
+```bash
+$ cp .envrc.sample .envrc
+
+$ vim .envrc
+
+# Update the file, etc
+
+# Should look similar to this.
+$ cat .envrc
+# Okta Tenent ie https://dev-1537305.okta.com or https://dev-1537305.oktapreview.com
+export OKTA_API_TOKEN=00e...
+export OKTA_ORG_NAME=dev-1537305
+export OKTA_BASE_URL=okta.com
+```
+
+3. Now load environment variable to only this directory with `direnv` tool.
+
+```bash
+$ direnv allow .
+
+# Output
+ie.
+direnv: loading /xdata/_prj/okta-terrafomer-demo/.envrc
+direnv: export +OKTA_API_TOKEN +OKTA_BASE_URL +OKTA_ORG_NAME
+```
+
+This demo walk-through expects a existing Okta org/tenant that contains a few supporting resources like: Oauth/OIDC apps, users, groups, etc.
+
+Prepare for extraction
+
+1. Create `okta.tf` or use the only in this repo.
+
+```bash
+$ cat okta.tf
+
+# Output
+ie.
+# This all you need to start with Terraformer to extract Okta resource from your Okta tenant.
+terraform {
+  required_providers {
+    okta = {
+      source  = "okta/okta",
+      version = "~> 3.13"
+    }
+  }
+}
+
+provider "okta" {
+}%
+```
+
+3. Install `terraform` binary and use verison that you installed. I will be using `tfenv` to do that.
+
+```bash
+# Install the terraform binary
+$ tfenv install 1.0.9
+
+# Set to the version that I installed
+$ tfenv use 1.0.9
+```
+
+4. Initialized the Okta provider. (Basically, get the Okta provider binaries to working space).
+
+```bash
+$ terraform init
+```
+
+5. Finally, start extracting the Okta resource using the `terraformer` commandline tool into HCL and Terraform State file.
+
+```bash
+$ terrafomer import okta --resources=okta_user
+```
+
+6. Review. The above command by default will create a `generated` folder containing specific resource that you wanted extracted, in the example that was the `okta_user` resource.
+
+``bash
+$tree generated
+
+# Output
+ie.
+generated
+└── okta
+    └── okta_user
+        ├── outputs.tf
+        ├── provider.tf
+        ├── terraform.tfstate
+        └── user.tf
+
+2 directories, 4 files
+```
+
+## More Example
+
+* Extract User and OAuth/OpenID Applications
+
+```bash
+$ terraformer import okta --resources=okta_user,okta_app_oauth
+```
+
+* Extract User, Groups, OAuth/OpenID Applications, and Authorization Server
+
+```bash
+$ terraformer import okta --resources=okta_user,okta_group,okta_app_oauth,okta_auth_server
+```
 
 ## Issues/Bugs or Features
 
