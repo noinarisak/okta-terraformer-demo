@@ -37,7 +37,7 @@ on darwin_amd64
 + provider registry.terraform.io/okta/okta v3.15.0
 ...
 
-# List help details
+# List of help details
 $ terraform help
 ```
 
