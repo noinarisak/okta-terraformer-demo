@@ -150,7 +150,9 @@ $ terrafomer import okta --resources=okta_user
 
 6. Review. The above command by default will create a `generated` folder containing specific resource that you wanted extracted, in the example that was the `okta_user` resource.
 
-``bash
+**NOTE**: I'm using the `tree` command tool, which may not exist in your OS. You can observe the generated folder using MacOS Finder app or similar tool.
+
+```bash
 $tree generated
 
 # Output
