@@ -30,8 +30,11 @@ Validate install:
 # Show version
 $ terraform version
 
+# Output
 ie.
-Terraform v1.x.x
+Terraform v1.0.9
+on darwin_amd64
++ provider registry.terraform.io/okta/okta v3.15.0
 ...
 
 # List help details
@@ -42,8 +45,9 @@ $ terraform help
 # Show version
 $ terraformer -v
 
+# Output
 ie.
-version v0.8.x
+version v0.8.17
 ```
 
 
