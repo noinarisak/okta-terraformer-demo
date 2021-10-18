@@ -13,16 +13,16 @@ Simple demos showcasing Okta and Terraformer( Reverse Terraform). The intended a
 * Okta Tenant - Free Development tenant [here](https://developer.okta.com/).
 * Terraform - Install docs [here](https://learn.hashicorp.com/tutorials/terraform/install-cli) and introduction [here](https://www.terraform.io/intro/index.html).
 * Terraformer - Install docs [here](https://github.com/GoogleCloudPlatform/terraformer#installation).
-* (Optional) [tfenv](https://github.com/tfutils/tfenv) - Terraform Version Manager 🎉
-* (Optional, but highly recommend) [dotenv](https://direnv.net/) - Best environment variable tool for command-line ninja.
+* (Optional, but highly recommended) [tfenv](https://github.com/tfutils/tfenv) - Terraform Version Manager 🎉
+* (Optional, but highly recommended) [dotenv](https://direnv.net/) - Best environment variable tool for command-line ninja.
 
 ## Quick Start
 
-**NOTE**: Please review Terraformer Okta supported resources at the following [link](https://github.com/GoogleCloudPlatform/terraformer/blob/master/docs/okta.md). The contributors are continously adding and fixing resources to align in parity to the Terraform Okta Provider. Issues and feature request can be submitted on the main [repo](https://github.com/GoogleCloudPlatform/terraformer/issues).
+**NOTE**: Please review Terraformer Okta supported resources at the following [link](https://github.com/GoogleCloudPlatform/terraformer/blob/master/docs/okta.md). The contributors are continuously adding and fixing resources to align in parity to the Terraform Okta Provider. Issues and feature request can be submitted on the main [repo](https://github.com/GoogleCloudPlatform/terraformer/issues).
 
 ### Tools
 
-**NOTE**: It is subtle but names of the commandline tools are `terraform` and `terraformer` which are two commandline applicatons.
+**NOTE**: It is subtle but names of the commandline tools are `terraform` and `terraformer` which are two commandline applications.
 
 Validate install:
 
@@ -84,7 +84,7 @@ $ vim .envrc
 
 # Should look similar to this.
 $ cat .envrc
-# Okta Tenent ie https://dev-1537305.okta.com or https://dev-1537305.oktapreview.com
+# Okta Tenant ie https://dev-1537305.okta.com or https://dev-1537305.oktapreview.com
 export OKTA_API_TOKEN=00e...
 export OKTA_ORG_NAME=dev-1537305
 export OKTA_BASE_URL=okta.com
@@ -96,9 +96,9 @@ export OKTA_BASE_URL=okta.com
 $ direnv allow .
 
 # Output
-ie.
-direnv: loading /xdata/_prj/okta-terrafomer-demo/.envrc
-direnv: export +OKTA_API_TOKEN +OKTA_BASE_URL +OKTA_ORG_NAME
+# ie.
+# direnv: loading /xdata/_prj/okta-terrafomer-demo/.envrc
+# direnv: export +OKTA_API_TOKEN +OKTA_BASE_URL +OKTA_ORG_NAME
 ```
 
 This demo walk-through expects a existing Okta org/tenant that contains a few supporting resources like: Oauth/OIDC apps, users, groups, etc.
@@ -111,22 +111,22 @@ Prepare for extraction
 $ cat okta.tf
 
 # Output
-ie.
-# This all you need to start with Terraformer to extract Okta resource from your Okta tenant.
-terraform {
-  required_providers {
-    okta = {
-      source  = "okta/okta",
-      version = "~> 3.13"
-    }
-  }
-}
+# ie.
+# # This all you need to start with Terraformer to extract Okta resource from your Okta tenant.
+# terraform {
+#   required_providers {
+#     okta = {
+#       source  = "okta/okta",
+#       version = "~> 3.13"
+#     }
+#   }
+# }
 
-provider "okta" {
-}%
+# provider "okta" {
+# }%
 ```
 
-3. Install `terraform` binary and use verison that you installed. I will be using `tfenv` to do that.
+3. Install `terraform` binary and use version that you installed. I will be using `tfenv` to do that.
 
 ```bash
 # Install the terraform binary
